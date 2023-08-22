@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #333;
+  line-height: 1;
+  /* background-color: #ecfbfe; */
+  background-image: linear-gradient(
+    to right,
+    #ecfbfe,
+    #d8eef3,
+    #c3e1ea,
+    #b0d4e0,
+    #9cc7d7
+  );
+}
+
+.container {
+  max-width: 92rem;
+  margin: 0 auto;
+}
+
+.container img {
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+}
+
+.welcome-msg {
+  font-size: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.balance-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+
+  margin-bottom: 3.2rem;
+}
+
+.btn {
+  border: none;
+  background: none;
+  padding: 1.2rem 2.4rem;
+  background-color: #06aed5;
+  color: #fff;
+  font-family: inherit;
+  border-radius: 0.6rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  margin-top: auto;
+}
+
+.btn:hover {
+  background-color: #08749b;
+}
+
+/* BALANCES */
+
+.money-wrapper {
+  background-color: #fff;
+  padding: 3.2rem 2.2rem;
+  width: 100%;
+
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  border-radius: 0.9rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.money--icon svg {
+  height: 3.2rem;
+  width: 3.2rem;
+}
+
+.money--icon {
+  justify-self: center;
+
+  padding: 1.2rem;
+  border-radius: 100rem;
+}
+
+.money-wrapper .balance {
+  fill: #08749b;
+  background-color: #d8f7fd;
+}
+
+.money-wrapper .income {
+  fill: #16a34a;
+  background-color: #dcfce7;
+}
+
+.money-wrapper .expanses {
+  fill: #dc2626;
+  background-color: #fee2e2;
+}
+
+.money-wrapper div {
+  display: flex;
+  flex-direction: column;
+}
+
+.money-title {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  color: #707683;
+  margin-bottom: 0.8rem;
+}
+
+.money-balance {
+  font-size: 2.4rem;
+}
+
+/*  */
+/* MAIN SCREEN */
+
+.main-screen {
+  display: grid;
+  grid-template-columns: 24rem 1fr;
+
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 0.9rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  background-color: #08749b;
+  padding: 4rem 3.2rem;
+}
+
+.tab-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  height: 100%;
+}
+
+.tab-list li {
+  border-radius: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #ecfbfe;
+  cursor: pointer;
+
+  transition: all 0.3s ease-in;
+}
+
+.tab-list li:hover {
+  background-color: #ecfbfe;
+  color: #08749b;
+}
+
+.tab-list li:hover .tab-icon svg {
+  fill: #08749b;
+}
+
+.tab-list li:last-child {
+  margin-top: auto;
+}
+
+.tab-icon svg {
+  height: 3.2rem;
+  width: 3.2rem;
+  fill: #ecfbfe;
+}
+
+.tab-name {
+  font-size: 1.6rem;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  padding: 3.4rem;
+  height: 58rem;
+}
+
+.add-income-screen {
+  height: 100%;
+}
+
+.add-income-screen h2 {
+  font-size: 2.4rem;
+  margin-bottom: 3.2rem;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 90%;
+}
+
+.add-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.add-form label {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #707683;
+}
+
+.add-form input,
+textarea,
+select {
+  height: 4.6rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.8rem;
+  color: #333;
+  font-family: inherit;
+  border: 1px solid #707683;
+  outline: none;
+  border-radius: 0.4rem;
+}
+
+.add-form input:focus,
+.add-form textarea:focus,
+.add-form select:focus {
+  outline: 1px solid #08749b;
+}
+
+.add-form textarea {
+  height: 10rem;
+}
+.add-form select {
+  margin-bottom: 2rem;
+}
