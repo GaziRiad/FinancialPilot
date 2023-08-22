@@ -15,15 +15,15 @@ body {
   font-weight: 600;
   color: #333;
   line-height: 1;
-  /* background-color: #ecfbfe; */
-  background-image: linear-gradient(
+  background-color: #ecfbfe;
+  /* background-image: linear-gradient(
     to right,
     #ecfbfe,
     #d8eef3,
     #c3e1ea,
     #b0d4e0,
     #9cc7d7
-  );
+  ); */
 }
 
 .container {
