@@ -71,6 +71,16 @@ function MainScreen({ onAddIncome, onAddExpanses, allTransaction }) {
 }
 
 function Home({ allTransaction }) {
+  const itemPerPage = 3;
+  const totalPages = Math.ceil(allTransaction.length / itemPerPage);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const startIndex = (currentPage - 1) * itemPerPage;
+  const endIndex = startIndex + itemPerPage;
+
+  const currentItems = allTransaction.slice(startIndex, endIndex);
+
   return (
     <div className="display-screen">
       <h2>all transactions</h2>
@@ -82,7 +92,7 @@ function Home({ allTransaction }) {
           <span>amount</span>
         </div>
         {allTransaction.length > 0 ? (
-          allTransaction.map((transaction) => (
+          currentItems.map((transaction) => (
             <Transaction key={transaction.id} transaction={transaction} />
           ))
         ) : (
@@ -92,11 +102,18 @@ function Home({ allTransaction }) {
         )}
         <div className="table-footer">
           <p>
-            Shwoing <span>1</span> to <span>10</span> of{" "}
-            <span>{allTransaction.length}</span> results
+            Shwoing <span>{startIndex + 1}</span> to <span>{endIndex - 1}</span>{" "}
+            of <span>{allTransaction.length}</span> results
           </p>
           <div className="table-bttns">
-            <button className="table-btn">
+            <button
+              className="table-btn"
+              onClick={() =>
+                setCurrentPage((currentPage) =>
+                  currentPage !== 1 ? currentPage - 1 : currentPage
+                )
+              }
+            >
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +126,14 @@ function Home({ allTransaction }) {
               </span>
               <span>Previous</span>
             </button>
-            <button className="table-btn">
+            <button
+              className="table-btn"
+              onClick={() =>
+                setCurrentPage((currentPage) =>
+                  currentPage !== totalPages ? currentPage + 1 : currentPage
+                )
+              }
+            >
               <span>Next</span>
               <span>
                 <svg
@@ -130,11 +154,25 @@ function Home({ allTransaction }) {
 }
 
 function Transaction({ transaction }) {
+  function isDateToday(dateString) {
+    const [day, month, year] = dateString.split("-");
+    const storedDate = new Date(`${year}-${month}-${day}`);
+
+    const currentDate = new Date();
+    return (
+      storedDate.getDate() === currentDate.getDate() &&
+      storedDate.getMonth() === currentDate.getMonth() &&
+      storedDate.getFullYear() === currentDate.getFullYear()
+    );
+  }
+
   return (
     <>
       <div className="transaction-wrapper">
         <span>{transaction.title}</span>
-        <span>{transaction.date}</span>
+        <span>
+          {isDateToday(transaction.date) ? "today" : transaction.date}
+        </span>
         <span>{transaction.value > 0 ? "Income" : "Exapanses"}</span>
         <span className="amount-and-edit-btn">
           <span>{+transaction.value}$</span>
