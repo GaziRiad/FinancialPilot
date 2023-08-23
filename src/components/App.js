@@ -4,20 +4,9 @@ import { Balances } from "./Balances";
 import { TabsList } from "./TabsList";
 
 export default function App() {
-  const [incomes, setIncomes] = useState([
-    // { id: 1, title: "Monthly salary", description: "from work", value: 2000 },
-    // {
-    //   id: 2,
-    //   title: "freelancing",
-    //   description: "from freelancing",
-    //   value: 1000,
-    // },
-  ]);
+  const [incomes, setIncomes] = useState([]);
 
-  const [expanses, setExpanses] = useState([
-    // { id: 1, title: "Groceries", description: "", value: 165 },
-    // { id: 2, title: "landed money", description: "", value: 500 },
-  ]);
+  const [expanses, setExpanses] = useState([]);
 
   function handleAddIncome(income) {
     // console.log(income);
@@ -69,7 +58,77 @@ function MainScreen({ onAddIncome, onAddExpanses }) {
 }
 
 function Home() {
-  return <div></div>;
+  return (
+    <div className="display-screen">
+      <h2>all transactions</h2>
+      <div className="transactions-table">
+        <div className="tableHeader">
+          <span>Transaction</span>
+          <span>Date</span>
+          <span>status</span>
+          <span>amount</span>
+        </div>
+        <Transaction />
+        <div className="table-footer">
+          <p>
+            Shwoing <span>1</span> to <span>10</span> of <span>24</span> results
+          </p>
+          <div className="table-bttns">
+            <button className="table-btn">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="40"
+                  viewBox="0 -960 960 960"
+                  width="40"
+                >
+                  <path d="m312.812-435.927 229.826 229.826L480-144.173 144.173-480 480-816.204l62.638 62.305-229.826 229.826h503.392v88.146H312.812Z" />
+                </svg>
+              </span>
+              <span>Previous</span>
+            </button>
+            <button className="table-btn">
+              <span>Next</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="40"
+                  viewBox="0 -960 960 960"
+                  width="40"
+                >
+                  <path d="M647.188-435.927H144.173v-88.146h503.015L417.362-753.899 480-816.204 816.204-480 480-144.173l-62.638-61.928 229.826-229.826Z" />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Transaction() {
+  return (
+    <>
+      <div className="transaction-wrapper">
+        <span>Monthly salary</span>
+        <span>today</span>
+        <span>Income</span>
+        <span className="amount-and-edit-btn">
+          <span>3,000$</span>
+          <svg
+            className="edit-transaction-btn"
+            xmlns="http://www.w3.org/2000/svg"
+            height="40"
+            viewBox="0 -960 960 960"
+            width="40"
+          >
+            <path d="M480.282-138.521q-27.253 0-46.586-19.308-19.333-19.309-19.333-46.424 0-26.838 19.281-46.473 19.281-19.635 46.357-19.635 27.535 0 46.586 19.659 19.05 19.658 19.05 46.587 0 26.928-19.051 46.261-19.052 19.333-46.304 19.333Zm0-275.842q-27.253 0-46.586-19.281t-19.333-46.357q0-27.535 19.281-46.586 19.281-19.05 46.357-19.05 27.535 0 46.586 19.051 19.05 19.052 19.05 46.304 0 27.253-19.051 46.586-19.052 19.333-46.304 19.333Zm0-275.276q-27.253 0-46.586-19.495-19.333-19.494-19.333-46.869t19.281-46.614q19.281-19.239 46.357-19.239 27.535 0 46.586 19.333 19.05 19.334 19.05 46.709 0 27.375-19.051 46.775-19.052 19.4-46.304 19.4Z" />
+          </svg>
+        </span>
+      </div>
+    </>
+  );
 }
 
 function IncomeAdd({ onAddIncome, setSelectedTab }) {
@@ -94,7 +153,7 @@ function IncomeAdd({ onAddIncome, setSelectedTab }) {
   }
 
   return (
-    <div className="add-income-screen">
+    <div className="display-screen">
       <h2>Add Income</h2>
       <form className="add-form" onSubmit={handleSubmit}>
         <div>
@@ -159,7 +218,7 @@ function ExpanseAdd({ onAddExpanses, setSelectedTab }) {
   }
 
   return (
-    <div className="add-income-screen">
+    <div className="display-screen">
       <h2>Add Expanses</h2>
       <form className="add-form" onSubmit={handleSubmit}>
         <div>

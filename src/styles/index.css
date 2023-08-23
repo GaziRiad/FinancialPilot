@@ -198,12 +198,15 @@ body {
   height: 58rem;
 }
 
-.add-income-screen {
+.display-screen {
   height: 100%;
+  overflow-y: scroll;
 }
 
-.add-income-screen h2 {
+.display-screen h2 {
   font-size: 2.4rem;
+  text-transform: capitalize;
+  color: #374151;
   margin-bottom: 3.2rem;
 }
 
@@ -250,4 +253,115 @@ select {
 }
 .add-form select {
   margin-bottom: 2rem;
+}
+
+/* HOME SCREEN */
+
+.transactions-table {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid rgba(112, 118, 131, 0.2);
+  border-radius: 0.4rem;
+}
+
+.tableHeader {
+  background-color: rgba(112, 118, 131, 0.08);
+  padding: 1.2rem 1.8rem;
+
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  /* grid-template-columns: 24fr 24fr 24fr 24fr auto; */
+  align-items: center;
+}
+
+.tableHeader span {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: rgba(55, 65, 81, 0.9);
+}
+
+/* .tableHeader svg {
+  height: 2.8rem;
+  width: 2.8rem;
+} */
+
+.transaction-wrapper {
+  background-color: #fff;
+  padding: 1.4rem 1.8rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 0.9);
+  border-bottom: 1px solid rgba(112, 118, 131, 0.2);
+
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  /* grid-template-columns: 24fr 24fr 24fr 24fr auto; */
+  align-items: center;
+}
+
+.amount-and-edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.amount-and-edit-btn svg {
+  height: 2.8rem;
+  width: 2.8rem;
+}
+
+.edit-transaction-btn {
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.edit-transaction-btn:hover {
+  background-color: rgba(112, 118, 131, 0.15);
+}
+
+.table-footer {
+  background-color: rgba(112, 118, 131, 0.08);
+  padding: 1.2rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.table-footer span {
+  font-weight: 600;
+}
+
+.table-bttns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  cursor: pointer;
+}
+
+.table-btn {
+  font-family: inherit;
+  border: none;
+  background: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.table-btn span {
+  font-weight: 500;
+}
+
+.table-btn svg {
+  margin-top: 0.4rem;
+  height: 1.6rem;
+  width: 1.6rem;
 }
