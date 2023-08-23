@@ -29,6 +29,7 @@ body {
 .container {
   max-width: 92rem;
   margin: 0 auto;
+  z-index: -20;
 }
 
 .container img {
@@ -191,6 +192,16 @@ body {
   font-size: 1.6rem;
 }
 
+.tab-active {
+  background-color: #ecfbfe;
+}
+
+.tab-active .tab-name,
+.tab-active .tab-icon svg {
+  color: #08749b;
+  fill: #08749b;
+}
+
 /* MAIN CONTENT */
 .main-content {
   padding: 3.4rem;
@@ -269,7 +280,7 @@ select {
 }
 
 .tableHeader {
-  background-color: rgba(112, 118, 131, 0.08);
+  background-color: rgba(112, 118, 131, 0.04);
   padding: 1.2rem 1.8rem;
 
   display: grid;
@@ -307,6 +318,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  position: relative;
 }
 
 .amount-and-edit-btn svg {
@@ -332,7 +345,7 @@ select {
 }
 
 .table-footer {
-  background-color: rgba(112, 118, 131, 0.08);
+  background-color: rgba(112, 118, 131, 0.04);
   padding: 1.2rem 1.8rem;
   display: flex;
   align-items: center;
@@ -373,4 +386,43 @@ select {
   margin-top: 0.4rem;
   height: 1.6rem;
   width: 1.6rem;
+}
+
+/* EDIT TRANSACTION MODAL */
+
+.edit-transaction-modal {
+  background-color: #fff;
+  border-radius: 0.4rem;
+  padding: 1.4rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+
+  position: absolute;
+  top: 110%;
+  right: 5%;
+  width: 14rem;
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.edit-transaction-option {
+  display: flex;
+  align-items: center;
+
+  gap: 0.6rem;
+}
+
+.edit-transaction-option span {
+  font-size: 1.2rem;
+  color: #707683;
+}
+
+.edit-transaction-option svg {
+  height: 2rem;
+  width: 2rem;
+  fill: #707683;
 }

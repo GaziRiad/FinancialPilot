@@ -1,6 +1,9 @@
-export function Tab({ name, onClick, children }) {
+export function Tab({ name, onClick, selectedTab, children }) {
   return (
-    <li onClick={() => onClick(name)}>
+    <li
+      className={selectedTab === name ? "tab-active" : ""}
+      onClick={() => onClick(name)}
+    >
       <span className="tab-icon">{children}</span>
       <span className="tab-name">{name}</span>
     </li>
