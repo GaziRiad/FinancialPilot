@@ -200,7 +200,7 @@ body {
 
 .display-screen {
   height: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .display-screen h2 {

@@ -71,7 +71,7 @@ function MainScreen({ onAddIncome, onAddExpanses, allTransaction }) {
 }
 
 function Home({ allTransaction }) {
-  const itemPerPage = 3;
+  const itemPerPage = 6;
   const totalPages = Math.ceil(allTransaction.length / itemPerPage);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -102,8 +102,8 @@ function Home({ allTransaction }) {
         )}
         <div className="table-footer">
           <p>
-            Shwoing <span>{startIndex + 1}</span> to <span>{endIndex - 1}</span>{" "}
-            of <span>{allTransaction.length}</span> results
+            Shwoing <span>{startIndex + 1}</span> to <span>{endIndex}</span> of{" "}
+            <span>{currentItems.length}</span> results
           </p>
           <div className="table-bttns">
             <button
