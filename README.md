@@ -16,4 +16,4 @@ Also this is my biggest porject so far, fully done by me!
 
 ## Images from the APP:
 
-![FinancialPilot web application]("./public/images/screenshots/improvements.png")
+![FinancialPilot web application](./public/images/screenshots/improvements.png)
