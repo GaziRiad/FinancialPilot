@@ -3,10 +3,22 @@ import "./../styles/index.css";
 import { Balances } from "./Balances";
 import { TabsList } from "./TabsList";
 
+function getCurrentFormattedDate() {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate()).padStart(2, "0");
+
+  return `${day}-${month}-${year}`;
+}
+
 export default function App() {
   const [incomes, setIncomes] = useState([]);
 
   const [expanses, setExpanses] = useState([]);
+
+  const allTransaction = [...incomes, ...expanses];
+  console.log(allTransaction);
 
   function handleAddIncome(income) {
     // console.log(income);
@@ -25,12 +37,13 @@ export default function App() {
       <MainScreen
         onAddIncome={handleAddIncome}
         onAddExpanses={handleAddExpanses}
+        allTransaction={allTransaction}
       />
     </div>
   );
 }
 
-function MainScreen({ onAddIncome, onAddExpanses }) {
+function MainScreen({ onAddIncome, onAddExpanses, allTransaction }) {
   const [selectedTab, setSelectedTab] = useState("Home");
 
   return (
@@ -50,14 +63,14 @@ function MainScreen({ onAddIncome, onAddExpanses }) {
             setSelectedTab={setSelectedTab}
           />
         ) : (
-          <Home />
+          <Home allTransaction={allTransaction} />
         )}
       </div>
     </div>
   );
 }
 
-function Home() {
+function Home({ allTransaction }) {
   return (
     <div className="display-screen">
       <h2>all transactions</h2>
@@ -68,10 +81,19 @@ function Home() {
           <span>status</span>
           <span>amount</span>
         </div>
-        <Transaction />
+        {allTransaction.length > 0 ? (
+          allTransaction.map((transaction) => (
+            <Transaction key={transaction.id} transaction={transaction} />
+          ))
+        ) : (
+          <p className="no-transactions--text">
+            Please Add some transactions to get results :)
+          </p>
+        )}
         <div className="table-footer">
           <p>
-            Shwoing <span>1</span> to <span>10</span> of <span>24</span> results
+            Shwoing <span>1</span> to <span>10</span> of{" "}
+            <span>{allTransaction.length}</span> results
           </p>
           <div className="table-bttns">
             <button className="table-btn">
@@ -107,15 +129,15 @@ function Home() {
   );
 }
 
-function Transaction() {
+function Transaction({ transaction }) {
   return (
     <>
       <div className="transaction-wrapper">
-        <span>Monthly salary</span>
-        <span>today</span>
-        <span>Income</span>
+        <span>{transaction.title}</span>
+        <span>{transaction.date}</span>
+        <span>{transaction.value > 0 ? "Income" : "Exapanses"}</span>
         <span className="amount-and-edit-btn">
-          <span>3,000$</span>
+          <span>{+transaction.value}$</span>
           <svg
             className="edit-transaction-btn"
             xmlns="http://www.w3.org/2000/svg"
@@ -143,6 +165,7 @@ function IncomeAdd({ onAddIncome, setSelectedTab }) {
       title,
       value,
       description,
+      date: getCurrentFormattedDate(),
     };
 
     onAddIncome(newIncome);
@@ -208,6 +231,7 @@ function ExpanseAdd({ onAddExpanses, setSelectedTab }) {
       title,
       value,
       description,
+      date: getCurrentFormattedDate(),
     };
 
     onAddExpanses(newExpanses);
